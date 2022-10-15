@@ -10,7 +10,7 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 // axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';  //参数需要用qs转化,可以在拦截器统一写 config.params
 const service = axios.create({
-    baseURL: NODE_ENV === 'kmdev1' ? '/' : API_URL, // url = base url + request url //使用nginx代理，不需要请求地址
+    baseURL: NODE_ENV === 'kmdev1' ? API_URL : API_URL, // url = base url + request url //使用nginx代理，不需要请求地址
     // baseURL: '/',
     timeout: 20000,
     headers: {
