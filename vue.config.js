@@ -162,7 +162,7 @@ module.exports = {
     },
     // webpack-dev-server配置
     devServer: {
-        open: true, // 打开浏览器
+        open: false, // 打开浏览器
         host: getNetworkIp(),
         port: 8080,
         https: false,
