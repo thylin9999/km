@@ -79,7 +79,8 @@ export default defineComponent({
     height: $NavHeinght;
     //padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
-    background: $color-background-white;
+    background: #171C39;
+    box-shadow: 0px -4px 18px 0px rgba(31,194,245,0.3);
     @include flexCenter();
     .tabbar {
         width: 100%;
@@ -92,7 +93,10 @@ export default defineComponent({
                 height: 100%;
                 @include flexColumnCenter();
                 img {
-                    width: 60px;
+                    width: 80px;
+                    height:80px;
+                    // object-fit: contain;
+                    margin-bottom: 10px;
                 }
                 span {
                     margin-top: -5px;
@@ -100,7 +104,7 @@ export default defineComponent({
                     color: $color-text-d2d2d2;
                 }
                 .active {
-                    color: $color-theme;
+                    color: #1FC2F5 !important;
                 }
             }
         }
