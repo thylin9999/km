@@ -47,23 +47,23 @@
                         </div>
                     </div>
                     <!-- 走马灯 -->
-                    <div class="notice" v-if="item.type === 8">
-                        <van-notice-bar
-                            left-icon="volume-o"
-                            background="#fff"
-                            color="#333"
-                            speed="30"
-                            scrollable
-                        >
-                            <span
-                                class="notice-message"
-                                v-for="nItem in item.data"
-                                :key="nItem.id"
-                                @click="openNewWindow(nItem.url)"
-                                >{{ nItem.msg }}</span
-                            >
-                        </van-notice-bar>
-                    </div>
+<!--                    <div class="notice" v-if="item.type === 8">-->
+<!--                        <van-notice-bar-->
+<!--                            left-icon="volume-o"-->
+<!--                            background="#171C39"-->
+<!--                            color="#fff"-->
+<!--                            speed="30"-->
+<!--                            scrollable-->
+<!--                        >-->
+<!--                            <span-->
+<!--                                class="notice-message"-->
+<!--                                v-for="nItem in item.data"-->
+<!--                                :key="nItem.id"-->
+<!--                                @click="openNewWindow(nItem.url)"-->
+<!--                                >{{ nItem.msg || '为了更好地用户体验' }}</span-->
+<!--                            >-->
+<!--                        </van-notice-bar>-->
+<!--                    </div>-->
                     <!-- 首页推荐、明星出品 -->
                     <div
                         class="meisei-exhibition"
@@ -350,6 +350,7 @@ export default defineComponent({
     }
 
     .notice {
+        background-color: #171C39;
         margin-top: -40px;
         &-message {
             font-size: $font-size-24;

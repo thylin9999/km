@@ -117,6 +117,7 @@ export default defineComponent({
 <style lang="scss">
 .has-nav {
     @include contentRestFull();
+    background-color: #11172A;
 }
 .no-nav {
     width: 100%;

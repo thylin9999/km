@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="home-content">
-            <div class="search">
+            <div class="search" style="background-color: #171C39">
                 <div class="search-left" @click="goToSearch">
                     <img src="../../assets/images/home/search.png" alt="" />
                     <div>请输入你想找的关键字</div>
@@ -170,6 +170,10 @@ export default defineComponent({
         &-wrap {
             height: calc(100% - 80px);
         }
+    }
+
+    .home-content{
+        background-color: #171C39;
     }
 }
 </style>
