@@ -27,6 +27,21 @@
             </van-cell>
             <van-cell title="用户名" :value="userInfoState.account" />
             <van-cell title="ID" :value="userInfoState.id" />
+            <van-cell title="性别">
+                <template #right-icon>
+                    <div>
+                        <img class="ahead_icon" src="@/assets/images/user/userCenter/women.png" alt="">
+                        <span class="sex_info">
+                            {{
+                            userInfoState.sex === 1
+                                ? '男'
+                                : '女'
+                        }}
+                        </span>
+                        <van-icon name="arrow"/>
+                    </div>
+                </template>
+            </van-cell>
             <van-cell title="手机号">
                 <template #right-icon>
                     <div @click="goBind(userInfoState.mobile)">
@@ -39,6 +54,14 @@
                     </div>
                 </template>
             </van-cell>
+            <van-cell title="修改密码">
+                <template #right-icon>
+                    <div>
+                        <van-icon name="arrow" />
+                    </div>
+                </template>
+            </van-cell>
+            <div class="bottom_divide_line"></div>
         </div>
         <div class="change-nickname">
             <van-dialog
@@ -69,10 +92,8 @@
                 </van-form>
             </van-dialog>
         </div>
-        <div class="logout-btn">
-            <van-button type="primary" round block @click="userLogout()"
-                >退出登录</van-button
-            >
+        <div class="logout-btn" @click="userLogout()">
+            退出登录
         </div>
     </div>
 </template>
@@ -183,10 +204,40 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+:deep(.van-nav-bar) {
+    background-color: #171C39;
+}
+:deep(.van-icon-arrow-left:before) {
+    color: #FFFFFF;
+    font-size: 39px;
+}
+:deep(.van-nav-bar__title) {
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 32px;
+}
+:deep(.van-cell) {
+    background-color: #11172a;
+}
+:deep(.van-hairline--bottom:after) {
+    border: none;
+}
+:deep(.van-cell__title) {
+    color: #FFFFFF;
+    margin-left: 20px;
+}
+:deep(.van-cell__value) {
+    color: #FFFFFF;
+}
+:deep(.van-cell:after) {
+    background-color: #48506B;
+    height: 1px;
+}
 .person-info {
     background-color: $color-global-background;
     position: relative;
     .person-info-content {
+
         .user-avatar {
             width: 80px;
             height: 80px;
@@ -210,9 +261,34 @@ export default defineComponent({
     .logout-btn {
         position: absolute;
         bottom: 80px;
-        width: 80%;
+        // width: 80%;
         left: 50%;
         transform: translateX(-50%);
+        width: 552px;
+        height: 82px;
+        background: #48506B;
+        border-radius: 10px;
+        font-size: 28px;
+        line-height: 82px;
+        text-align: center;
+        color: #FFFFFF;
     }
+}
+.ahead_icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    margin-right: 8px;
+}
+.sex_info {
+    color: #FFFFFF;
+    display: inline-block;
+    margin-right: 14px;
+}
+.bottom_divide_line {
+    height: 1px;
+    background: #48506B;
+    width: 690px;
+    margin: 0 auto;
 }
 </style>

@@ -25,7 +25,10 @@
                         </div>
                     </div>
                     <div class="member-buy-status">
-                        <div class="nick-name">{{ userInfo.nick_name }}</div>
+                        <div class="nick-name">
+                            {{ userInfo.nick_name
+                            }}<span class="sex_type"></span>
+                        </div>
                         <div class="buy-status">
                             <span class="buy-status-des">{{
                                 userInfo.is_vip === 1
@@ -33,6 +36,9 @@
                                     : '当前暂未开通会员'
                             }}</span>
                         </div>
+                    </div>
+                    <div class="buy_vip_now">
+                        {{ userInfo.is_vip === 1 ? '立即续费' : '立即开通' }}
                     </div>
                 </van-skeleton>
             </div>
@@ -85,7 +91,7 @@
                             </div>
                             <div class="combo-equity-item-right">
                                 <div class="equity-title">{{ item.title }}</div>
-                                <p class="equity-des">{{ item.sub_title }}</p>
+                                <div class="equity-des">{{ item.sub_title }}</div>
                             </div>
                         </div>
                     </div>
@@ -98,8 +104,8 @@
                 <div class="bottom-btn">
                     <div class="bottom-btn-left">
                         <div class="price">
-                            <span>{{ info?.vip_text }}¥</span
-                            ><span>{{ info?.price }}</span>
+                            <span>{{ info?.vip_text }}¥ </span
+                            ><span> {{ info?.price }}</span>
                         </div>
                     </div>
                     <div class="bottom-btn-right">
@@ -231,20 +237,54 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+:deep(.van-nav-bar) {
+    background-color: #171c39;
+}
+:deep(.van-icon-arrow-left:before) {
+    color: #ffffff;
+    font-size: 39px;
+}
+:deep(.van-nav-bar__title) {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 32px;
+}
+:deep(.van-cell) {
+    background-color: #11172a;
+}
+:deep(.van-hairline--bottom:after) {
+    border: none;
+}
+:deep(.van-cell__title) {
+    color: #ffffff;
+    margin-left: 20px;
+}
+:deep(.van-cell__value) {
+    color: #ffffff;
+}
+:deep(.van-cell:after) {
+    background-color: #48506b;
+    height: 1px;
+}
 .member {
+    background-color: #171c39;
     .member-header {
         width: 100%;
         height: 300px;
         padding-top: 60px;
-        @include bgurl('@/assets/images/user/mine_bg_vip.png');
-        background-position-y: -130px;
+        // @include bgurl('@/assets/images/user/mine_bg_vip.png');
+        // background-position-y: -130px;
+        // background: #11172A;
+        // box-shadow: 0px -8px 26px 0px rgba(42,51,110,0.49);
 
         .member-info {
-            margin: 100px auto 0;
-            width: 90%;
-            height: 200px;
-            @include bgurl('@/assets/images/user/myvip_bg.png');
+            margin: 90px auto 0;
+            width: 702px;
+            height: 188px;
+            @include bgurl('@/assets/images/user/userCenter/vip/top_bg.png');
+            // background-size: 100% 100%;
             @include flexBetweenCenter();
+            position: relative;
             .van-skeleton {
                 width: 100%;
             }
@@ -277,17 +317,45 @@ export default defineComponent({
                 margin-left: 15px;
                 .nick-name {
                     color: $color-text-price;
-                    font-size: $font-size-24;
+                    font-size: $font-size-32;
+                    font-weight: 500;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    height: 44px;
+                    line-height: 44px;
+                    .sex_type {
+                        width: 24px;
+                        height: 24px;
+                        @include bgurl(
+                            '@/assets/images/user/userCenter/vip/man.png'
+                        );
+                        margin-left: 16px;
+                    }
                 }
                 .buy-status {
-                    margin-top: 20px;
+                    margin-top: 26px;
                     @include flexBetweenCenter();
                     width: 100%;
                     .buy-status-des {
+                        height: 34px;
+                        line-height: 34px;
                         color: $color-text-price;
-                        font-size: $font-size-20;
+                        font-size: $font-size-24;
                     }
                 }
+            }
+            .buy_vip_now {
+                position: absolute;
+                width: 130px;
+                height: 40px;
+                line-height: 40px;
+                background: linear-gradient(137deg, #fff5b8 0%, #ffc318 100%);
+                border-radius: 30px;
+                font-size: 20px;
+                right: 32px;
+                bottom: 40px;
+                text-align: center;
             }
         }
     }
@@ -295,8 +363,8 @@ export default defineComponent({
         margin-top: 30px;
         padding: 0 30px 120px;
         .member-combo-title {
-            font-size: $font-size-24;
-            font-weight: 800;
+            font-size: $font-size-28;
+            font-weight: 500;
             color: $color-text-51;
         }
         .choose-content {
@@ -309,21 +377,41 @@ export default defineComponent({
                 &.active {
                     border-color: $color-background-gloden;
                     .choose-content-item-top {
-                        background-color: $color-background-gloden;
-                        border-color: $color-background-gloden;
+                        border-color: #ffc827;
+                        color: #ffcc35;
                     }
                     .choose-content-item {
                         border-color: $color-background-gloden;
+                        background: #171c39
+                            linear-gradient(137deg, #fff5b8 0%, #ffc318 100%);
+                        &-bottom {
+                            .price {
+                                height: 72px;
+                                line-height: 72px;
+                                color: $color-text-black;
+                                .rmb {
+                                    font-size: $font-size-24;
+                                }
+                                .amount {
+                                    font-size: $font-size-48;
+                                    // font-weight: bold;
+                                }
+                                flex: 1;
+                                @include flexCenter();
+                                align-items: flex-end;
+                            }
+                        }
                     }
                 }
                 .choose-content-item {
-                    width: 180px;
-                    height: 220px;
-                    border: 4px solid rgb(184, 184, 184);
+                    width: 210px;
+                    height: 298px;
+                    // border: 4px solid rgb(184, 184, 184);
                     border-radius: 10px;
-                    @include flexColumnCenter();
+                    background-color: #48506b;
+                    @include flexColumnStart();
                     margin: 0 auto;
-                    box-shadow: 5px 5px 10px $color-highlight-background;
+                    // box-shadow: 5px 5px 10px $color-highlight-background;
                     &:last-child {
                         margin-right: auto;
                     }
@@ -331,38 +419,42 @@ export default defineComponent({
                         width: 100%;
                         @include flexCenter();
                         height: 40px;
-                        border-bottom: 4px solid rgb(184, 184, 184);
+                        border-bottom: 1px solid #11172a;
                         font-size: $font-size-24;
-                        color: $color-text-333;
+                        color: white;
                         border-top-left-radius: 10px;
                         border-top-right-radius: 10px;
                     }
                     &-bottom {
                         width: 100%;
-                        flex: 1;
+                        // flex: 1;
+                        margin-top: 46px;
                         @include flexColumnCenter();
                         .price {
-                            color: $color-text-black;
+                            height: 72px;
+                            line-height: 72px;
+                            color: white;
                             .rmb {
                                 font-size: $font-size-24;
                             }
                             .amount {
                                 font-size: $font-size-48;
-                                font-weight: bold;
+                                // font-weight: bold;
                             }
                             flex: 1;
                             @include flexCenter();
                             align-items: flex-end;
                         }
                         .discount {
-                            background-color: $color-background-gloden;
-                            font-size: $font-size-20;
-                            margin: 10px 0;
+                            background-color: #171c39;
+                            font-size: $font-size-16;
+                            margin: 0 auto;
+                            margin-bottom: 22px;
                             padding: 4px 8px;
                             border-radius: 15px;
-                            color: $color-text-orange;
-                            height: 28px;
-                            line-height: 28px;
+                            color: #ffe688;
+                            height: 30px;
+                            line-height: 30px;
                         }
                         .no-discount {
                             width: 100%;
@@ -372,7 +464,7 @@ export default defineComponent({
                         }
                         .price-per {
                             font-size: $font-size-24;
-                            color: $color-text-102;
+                            color: #ffffff;
                             margin-bottom: 15px;
                         }
                     }
@@ -384,16 +476,22 @@ export default defineComponent({
             margin: 30px 0 20px;
             @include flexBetweenCenterWrap();
             &-cover {
-                width: 45%;
+                width: 340px;
+                height: 160px;
+                @include bgurl('@/assets/images/user/userCenter/vip/privilege_bg.png');
+                margin-bottom: 14px;
+                background-size: 100% 100%;
                 .combo-equity-item {
-                    background-color: $color-background-gray;
+                    height: 100%;
                     border-radius: 10px;
-                    padding: 20px;
-                    @include flexBetweenStart();
-                    margin-bottom: 25px;
+                    padding: 0 44px 0 26px;
+                    box-sizing: border-box;
+                    // padding: 20px;
+                    @include flexAroundCenter();
+                    
                     &-left {
-                        width: 120px;
-                        height: 120px;
+                        width: 132px;
+                        height: 94px;
                         border-radius: 10px;
                         margin-bottom: 30px;
                         img {
@@ -404,16 +502,28 @@ export default defineComponent({
                         }
                     }
                     &-right {
-                        flex: 1;
+                        width: 128px;
                         margin-left: 15px;
                         .equity-title {
-                            color: $color-text-333;
+                            color: #FFFFFF;
                             font-size: $font-size-28;
-                            margin-bottom: 20px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            height: 40px;
+                            line-height: 40px;
                         }
                         .equity-des {
-                            font-size: $font-size-20;
-                            color: $color-text-102;
+                            // height: 44px;
+                            line-height: 30px;
+                            font-size: 16px;
+                            color: #11172A;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            /*! autoprefixer: off */
+                            -webkit-box-orient: vertical;
                         }
                     }
                 }
@@ -426,40 +536,45 @@ export default defineComponent({
         position: fixed;
         bottom: 0;
         left: 0;
-        background-color: $color-background-white;
+        background-color: #11172A;
         z-index: 9;
         &-cover {
             width: 100%;
             height: 100%;
             @include flexColumnCenter();
+            background-color: #11172A;
         }
         .bottom-btn {
             width: 80%;
             height: 80px;
+            background-color: #48506B;
             @include flexBetweenCenter();
+            border-radius: 40px;
             &-left {
                 width: 70%;
                 height: 100%;
                 line-height: 80px;
-                background-color: $color-background-buy;
+                background-color: #48506B;
                 padding-left: 30px;
                 border-top-left-radius: 40px;
                 border-bottom-left-radius: 40px;
                 .price {
                     color: $color-text-price;
+                    height: 100%;
                     span:nth-child(2) {
                         font-size: $font-size-48;
                     }
                 }
             }
             &-right {
-                flex: 1;
+                width: 236px;
                 height: 100%;
                 line-height: 80px;
                 text-align: center;
                 border-top-right-radius: 40px;
                 border-bottom-right-radius: 40px;
-                background-color: $color-background-gloden;
+                @include bgurl('@/assets/images/user/userCenter/vip/btn_bg.png');
+                background-size: 100% 100%;
                 .buy-btn {
                     width: 100%;
                     font-size: $font-size-28;
