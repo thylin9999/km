@@ -6,11 +6,11 @@
 -->
 <template>
     <div class="register">
-        <v-header left-arrow :border="false" />
+        <!-- <v-header left-arrow :border="false" /> -->
         <div class="register-content">
-            <div class="register-title">
+            <!-- <div class="register-title">
                 <p>用户注册</p>
-            </div>
+            </div> -->
             <div class="register-from">
                 <div class="register-account">
                     <van-form @submit="onSubmitRegister">
@@ -64,8 +64,8 @@
                 >
             </p>
         </div>
-        <div class="semi-circle"></div>
-        <div class="sector"></div>
+        <!-- <div class="semi-circle"></div>
+        <div class="sector"></div> -->
     </div>
 </template>
 
@@ -127,11 +127,30 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+:deep(.van-cell) {
+    background:transparent;
+}
+:deep(.van-field__label) {
+    color: #fff;
+}
+:deep(.van-field__control) {
+    color: rgba(67, 75, 101, 1);
+}
+:deep(.van-button--normal) {
+    background: linear-gradient(137deg, #FFF5B8 0%, #FFC318 100%);
+    color: #11172A;
+}
 .register {
     position: relative;
     overflow: hidden;
+     @include bgurl('@/assets/images/user/loginBg.png');
     .register-content {
         padding: 30px 40px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        box-sizing: border-box;
         .register-title {
             p {
                 color: $color-text-51;
@@ -144,6 +163,8 @@ export default defineComponent({
             margin-top: 140px;
 
             .register-submit {
+                width: 430px;
+                margin: 0 auto;
                 margin-top: 80px;
             }
         }

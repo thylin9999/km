@@ -144,7 +144,7 @@
         <div class="recharge-bottom">
             <div class="recharge-chat">
                 <div class="recharge-chat-qq" v-if="isHttpUrl(payList.payqq)">
-                    <router-link :to="`/iframe?src=${payList.payqq.trim()}`">
+                    <router-link :to="`/iframe?src=${payList.payqq.trim()}`" style="color: #fff;">
                         <img
                             src="@/assets/images/user/icon_help.png"
                             alt=""
@@ -302,7 +302,37 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+:deep(.van-nav-bar) {
+    background-color: #171C39;
+}
+:deep(.van-icon-arrow-left:before) {
+    color: #FFFFFF;
+    font-size: 39px;
+}
+:deep(.van-nav-bar__title) {
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 32px;
+}
+:deep(.van-cell) {
+    background-color: #11172a;
+}
+:deep(.van-hairline--bottom:after) {
+    border: none;
+}
+:deep(.van-cell__title) {
+    color: #FFFFFF;
+    margin-left: 20px;
+}
+:deep(.van-cell__value) {
+    color: #FFFFFF;
+}
+:deep(.van-cell:after) {
+    background-color: #48506B;
+    height: 1px;
+}
 .recharge {
+    background-color: #11172a;
     .record-text {
         color: $color-theme;
     }
@@ -317,6 +347,7 @@ export default defineComponent({
         padding: 100px 30px 30px;
         .recharge-title {
             font-size: $font-size-32;
+            color: #FFFFFF;
             margin: 25px 0;
             .title-icon {
                 width: 5px;
@@ -338,6 +369,7 @@ export default defineComponent({
                     @include flexCenter();
                     border: 1px solid $color-text-gray;
                     border-radius: 8px;
+                    color: #FFFFFF;
                     .gold {
                         margin-right: 5px;
                         color: $color-theme;
@@ -359,6 +391,7 @@ export default defineComponent({
                         width: 200px;
                         height: 80px;
                         margin: 0 auto;
+                        color: #FFFFFF;
                         @include flexCenter();
                         border: 1px solid $color-text-gray;
                         border-radius: 8px;
@@ -397,6 +430,7 @@ export default defineComponent({
                 }
                 .chat-name {
                     font-size: $font-size-28;
+                    color: #FFFFFF;
                 }
             }
         }
@@ -409,7 +443,8 @@ export default defineComponent({
         .recharge-btn {
             width: 100%;
             height: 120px;
-            background-color: $color-background-buy2;
+            // background-color: $color-background-buy2;
+            background-color:#11172a;
             z-index: 9;
             @include flexColumnCenter();
             .buy-btn {

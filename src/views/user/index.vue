@@ -96,7 +96,7 @@
             </div>
         </div>
         <div class="user-wallet">
-            <div class="user-wallet-info">
+            <div class="user-wallet-info" >
                 <van-skeleton
                     avatar
                     :row="2"
@@ -106,9 +106,9 @@
                     avatar-size="64px"
                 >
                     <div class="user-walet-content">
-                        <span class="label">钱包</span>
+                        <span class="label" @click="$router.push('/wallet')">钱包</span>
                         <span class="wallet_num">¥0.00</span>
-                        <span class="label">点击充值</span>
+                        <span class="label" @click="$router.push('/recharge')">点击充值</span>
                     </div>
                 </van-skeleton>
             </div>
@@ -136,9 +136,15 @@
                            <img src="../../assets/images/user/userCenter/message.png" alt="">
                            <span>消息通知</span>
                        </div>
-                       <div class="privilege_item">
+                       <div class="privilege_item" @click="openCustomer()">
                            <img src="../../assets/images/user/userCenter/customer.png" alt="">
                            <span>在线客服</span>
+                           <!-- <router-link
+                                :to="`/iframe?src=${customer.payqq.trim()}`"
+                                v-if="customer.payqq"
+                                class="user-cusromer"
+                            >
+                            </router-link> -->
                        </div>
                     </div>
                 </van-skeleton>
@@ -206,7 +212,7 @@
                         isLogin && Object.keys(userInfoState).length === 0
                     "
                 >
-                   <div class="line_item">
+                   <div class="line_item" @click="$router.push('/personInfo')">
                        <div class="left-part">
                            <div class="left_icon icon1"></div>
                             <span>个人资料</span>
@@ -248,7 +254,7 @@
                         isLogin && Object.keys(userInfoState).length === 0
                     "
                 >
-                   <div class="line_item">
+                   <div class="line_item" @click="$router.push('/shareApp')">
                        <div class="left-part">
                            <div class="left_icon icon4"></div>
                             <span>邀请好友</span>
@@ -298,6 +304,7 @@
 <script lang="ts">
 import { defineComponent, computed, onActivated } from 'vue';
 import _ from 'lodash';
+import { useRouter } from 'vue-router'
 import { useStore } from '@/store';
 import { userActionTypes } from '@/store/modules/user/action-types';
 import avatar from '@/assets/images/user/user_avatar.png';
@@ -313,10 +320,20 @@ export default defineComponent({
     },
     setup() {
         const store = useStore();
+        const appRouter = useRouter();
         const isLogin = computed(() => store.getters.getterIsLogin);
         const userInfoState = computed(() => store.getters.getterUserInfo);
         const userAmountState = computed(() => store.getters.getterUserAmount);
-        const customer = computed(() => store.getters.getterConfig);
+        const customer: any = computed(() => store.getters.getterConfig);
+        const payList = computed(() => store.getters.getterPayList);
+        const openCustomer = () => {
+            appRouter.push({
+                path: '/iframe',
+                query: {
+                    src: 'https://admin.168tykf.com/chatIndex?kefu_id=kumi002&ent_id=45'
+                }
+            })
+        }
 
         onActivated(() => {
             if (isLogin.value) {
@@ -331,6 +348,7 @@ export default defineComponent({
             userAmountState,
             avatar,
             customer,
+            openCustomer
         };
     },
 });

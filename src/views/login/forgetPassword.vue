@@ -163,13 +163,58 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+:deep(.van-nav-bar) {
+    background-color: #171C39;
+}
+:deep(.van-icon-arrow-left:before) {
+    color: #FFFFFF;
+    font-size: 39px;
+}
+:deep(.van-nav-bar__title) {
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 32px;
+}
+:deep(.van-cell) {
+    background-color: #11172a;
+}
+:deep(.van-hairline--bottom:after) {
+    border: none;
+}
+:deep(.van-cell__title) {
+    color: #FFFFFF;
+    margin-left: 20px;
+}
+:deep(.van-cell__value) {
+    color: #FFFFFF;
+}
+:deep(.van-cell:after) {
+    background-color: #48506B;
+    height: 1px;
+}
+:deep(.van-cell) {
+    background:transparent;
+}
+:deep(.van-field__label) {
+    color: #fff;
+}
+:deep(.van-field__control) {
+    color: rgba(67, 75, 101, 1);
+}
+:deep(.van-button--normal) {
+    background: linear-gradient(137deg, #FFF5B8 0%, #FFC318 100%);
+    color: #11172A;
+}
 .forget-password {
+    background-color: #171C39 ;
     .forget-password-content {
         padding: 30px 40px;
         .send-msg {
             color: $color-theme;
         }
         .forget-password-submit {
+            width: 430px;
+            margin: 0 auto;
             margin-top: 80px;
         }
     }

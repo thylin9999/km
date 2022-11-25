@@ -6,12 +6,12 @@
 -->
 <template>
     <div class="login">
-        <v-header left-arrow :border="false" />
+        <!-- <v-header left-arrow :border="false" /> -->
         <div class="login-content">
-            <div class="login-title">
+            <!-- <div class="login-title">
                 <p>Hi,</p>
                 <p>登录后更精彩</p>
-            </div>
+            </div> -->
             <div class="login-from">
                 <transition appear name="slide-right">
                     <div class="login-account" v-if="isAccountLogin">
@@ -142,8 +142,8 @@
                 >
             </p>
         </div>
-        <div class="semi-circle"></div>
-        <div class="sector"></div>
+        <!-- <div class="semi-circle"></div>
+        <div class="sector"></div> -->
     </div>
 </template>
 
@@ -286,11 +286,30 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+:deep(.van-cell) {
+    background:transparent;
+}
+:deep(.van-field__label) {
+    color: #fff;
+}
+:deep(.van-field__control) {
+    color: rgba(67, 75, 101, 1);
+}
+:deep(.van-button--normal) {
+    background: linear-gradient(137deg, #FFF5B8 0%, #FFC318 100%);
+    color: #11172A;
+}
 .login {
     position: relative;
     overflow: hidden;
+     @include bgurl('@/assets/images/user/loginBg.png');
     .login-content {
         padding: 30px 40px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        box-sizing: border-box;
         .login-title {
             p {
                 color: $color-text-51;
@@ -319,7 +338,7 @@ export default defineComponent({
                 height: 40px;
                 span {
                     font-size: $font-size-24;
-                    color: $color-text-102;
+                    color: #fff;
                     display: block;
                 }
             }
@@ -327,6 +346,8 @@ export default defineComponent({
                 color: $color-theme;
             }
             .login-submit {
+                width: 430px;
+                margin: 0 auto;
                 margin-top: 80px;
             }
             .new-user-register {
@@ -334,6 +355,7 @@ export default defineComponent({
                 text-align: center;
                 font-size: $font-size-28;
                 margin-top: 40px;
+                color: #fff;
             }
         }
     }

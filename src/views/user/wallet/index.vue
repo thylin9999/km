@@ -8,7 +8,7 @@
     <div class="wallet">
         <v-header left-arrow title="钱包">
             <template #right>
-                <span @click="$router.push('/rechargeRecord')">交易记录</span>
+                <span @click="$router.push('/rechargeRecord')" style="color: #fff;">交易记录</span>
             </template>
         </v-header>
         <div class="wallet-content">
@@ -106,6 +106,35 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+:deep(.van-nav-bar) {
+    background-color: #171C39;
+}
+:deep(.van-icon-arrow-left:before) {
+    color: #FFFFFF;
+    font-size: 39px;
+}
+:deep(.van-nav-bar__title) {
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 32px;
+}
+:deep(.van-cell) {
+    background-color: #11172a;
+}
+:deep(.van-hairline--bottom:after) {
+    border: none;
+}
+:deep(.van-cell__title) {
+    color: #FFFFFF;
+    margin-left: 20px;
+}
+:deep(.van-cell__value) {
+    color: #FFFFFF;
+}
+:deep(.van-cell:after) {
+    background-color: #48506B;
+    height: 1px;
+}
 .wallet {
     .wallet-content {
         width: 100%;
@@ -189,7 +218,7 @@ export default defineComponent({
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
-                    color: $color-text-black;
+                    color: $color-text-white;
                     position: relative;
                     bottom: 0px;
                 }
