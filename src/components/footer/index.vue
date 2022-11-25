@@ -77,7 +77,7 @@ export default defineComponent({
     z-index: 99;
     width: 100%;
     height: $NavHeinght;
-    padding-bottom: constant(safe-area-inset-bottom);
+    //padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
     background: $color-background-white;
     @include flexCenter();
@@ -92,10 +92,10 @@ export default defineComponent({
                 height: 100%;
                 @include flexColumnCenter();
                 img {
-                    width: 40px;
+                    width: 60px;
                 }
                 span {
-                    margin-top: 8px;
+                    margin-top: -5px;
                     font-size: 24px;
                     color: $color-text-d2d2d2;
                 }

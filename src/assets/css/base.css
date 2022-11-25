@@ -133,3 +133,19 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+.van-tabs__nav--line.van-tabs__nav--shrink, .van-tabs__nav--line.van-tabs__nav--complete {
+    background-color: #171C39;
+}
+
+.movie-tabs .van-tabs__line{
+    background-color: #b30ea8!important;
+}
+
+.van-tab__text{
+    color: #FFFFFF;
+}
+
+.km-footer .tabbar-item a .active{
+    color: #b30ea8!important;
+}

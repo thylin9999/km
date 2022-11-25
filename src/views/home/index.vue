@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="home-content">
-            <div class="search" style="background-color: #171C39">
+            <div class="search">
                 <div class="search-left" @click="goToSearch">
                     <img src="../../assets/images/home/search.png" alt="" />
                     <div>请输入你想找的关键字</div>
@@ -125,6 +125,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .home {
+    background-color: #171C39;
     &-content {
         height: 100%;
         img {
@@ -141,7 +142,7 @@ export default defineComponent({
             left: 0;
             z-index: 10;
             box-sizing: border-box;
-            background: $color-background-white;
+            background: #171C39;
             @include flexStartCenter();
             &-left {
                 width: 100%;
@@ -168,12 +169,12 @@ export default defineComponent({
             }
         }
         &-wrap {
+            background-color: #171C39;
             height: calc(100% - 80px);
         }
     }
-
-    .home-content{
-        background-color: #171C39;
-    }
+}
+.van-tabs__nav--line.van-tabs__nav--shrink, .van-tabs__nav--line.van-tabs__nav--complete {
+    background-color: #171C39!important;
 }
 </style>

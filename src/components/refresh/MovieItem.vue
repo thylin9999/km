@@ -16,7 +16,7 @@
                 {{ item?.duration }}
             </div>
         </div>
-        <p class="movies-item-title">{{ item?.title }}</p>
+        <p class="movies-item-title" style="color: #fff">{{ item?.title }}</p>
     </div>
 </template>
 

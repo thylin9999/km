@@ -92,7 +92,7 @@ export default defineComponent({
         font-size: $font-size-32;
         font-weight: 600;
         margin-bottom: 30px;
-        color: $color-text-333;
+        color: $color-text-white;
     }
 }
 </style>
