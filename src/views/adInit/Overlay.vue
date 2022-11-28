@@ -14,7 +14,8 @@
                             class="officenotice-item-content"
                             v-html="item.content"
                         ></div>
-                        <div class="btn">我知道了</div>
+                        <div class="btn" @click.stop="knowClick(item, idx)">我知道了</div>
+                        <div class="close_btn"></div>
                     </div>
                 </div>
             </div>
@@ -177,28 +178,33 @@ export default defineComponent({
     }
 }
 .officenotice {
-    width: 560px;
-    height: 800px;
+    width: 632px;
+    height: 882px;
     overflow: hidden;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position-y: -2px;
-    background-image: url('../../assets/images/dialog/home_notice_dialog.png');
+    background-image: url('../../assets/images/dialog/noticeBg.png');
     &-item {
         width: 100%;
         height: 100%;
         h1 {
-            padding-top: 235px;
-            margin-bottom: 34px;
+            padding-top: 36px;
+            margin-bottom: 36px;
             text-align: center;
-            font-size: $font-size-40;
-            font-weight: 600;
+            font-size: 50px;
+            color: #ffffff;
+            line-height: 74px;
+            height: 74px;
+            background: linear-gradient(90deg, #E6B277 0%, #FFCEAA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         &-content {
             width: 70%;
-            height: 330px;
+            height: 400px;
             margin: auto;
-            font-size: $font-size-30;
+            font-size: 24px;
             overflow-x: hidden;
             overflow-y: scroll;
             &::-webkit-scrollbar {
@@ -206,16 +212,27 @@ export default defineComponent({
             }
         }
         .btn {
-            width: 200px;
-            height: 66px;
-            line-height: 66px;
+            width: 430px;
+            height: 70px;
+            background: linear-gradient(137deg, #FFF5B8 0%, #FFC318 100%);
+            border-radius: 36px;
+            line-height: 70px;
             text-align: center;
-            margin: 40px auto 0;
-            color: $color-text-white;
-            font-size: $font-size-28;
+            margin: 100px auto 0;
+            color: #11172A;
+            font-size: 24px;
+        }
+        .close_btn {
+            position: fixed;
+            width: 78px;
+            height: 76px;
+            background-image: url('../../assets/images/dialog/closeBtn.png');
             background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-image: url('../../assets/images/dialog/btn.png');
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            bottom: 0px;
+            z-index: 110;
         }
     }
 }

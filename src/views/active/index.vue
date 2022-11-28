@@ -55,8 +55,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+:deep(.van-tab) {
+    background-color: #171C39;
+}
 .active {
     width: 100%;
+    background-color: #171C39;
 
     a {
         display: block;

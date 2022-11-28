@@ -111,6 +111,7 @@ export default defineComponent({
     right: 0;
     z-index: 299;
     background: $color-background-white;
+    background-color: #171C39;
     &-content {
         width: 100%;
         height: 100%;
